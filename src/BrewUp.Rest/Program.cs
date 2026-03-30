@@ -31,7 +31,9 @@ builder.Services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo()
 	}
 }));
 
-builder.Services.AddMongoDb(builder.Configuration.GetSection("BrewUp:MongoDbSettings").Get<MongoDbSettings>()!);
+
+var mongoDbSettings = builder.Configuration.GetSection("BrewUp:MongoDbSettings").Get<MongoDbSettings>();
+builder.Services.AddMongoDb(mongoDbSettings!);
 
 builder.Services.AddKeyedScoped<IRepository, SaleRepository>("sale");
 builder.Services.AddKeyedScoped<IRepository, WarehouseRepository>("warehouse");

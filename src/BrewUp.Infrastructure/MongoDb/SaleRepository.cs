@@ -14,7 +14,7 @@ public class SaleRepository : IRepository
 		ILoggerFactory loggerFactory)
 	{
 		_logger = loggerFactory.CreateLogger(GetType());
-		_database = mongoClient.GetDatabase("Sales");
+		_database = mongoClient.GetDatabase("BrewUp");
 	}
 
 	public async Task<T> GetByIdAsync<T>(string id, CancellationToken cancellationToken) where T : EntityBase
@@ -59,7 +59,7 @@ public class SaleRepository : IRepository
 	{
 		cancellationToken.ThrowIfCancellationRequested();
 
-		var type = typeof(T).Name;
+		var type = typeof(T).Name;	
 		try
 		{
 			var collection = _database.GetCollection<T>(type);

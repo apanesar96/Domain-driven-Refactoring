@@ -14,7 +14,7 @@ public class WarehouseRepository : IRepository
 		ILoggerFactory loggerFactory)
 	{
 		_logger = loggerFactory.CreateLogger(GetType());
-		_database = mongoClient.GetDatabase("Sales");
+		_database = mongoClient.GetDatabase("BrewUp");
 	}
 
 	public async Task<T> GetByIdAsync<T>(string id, CancellationToken cancellationToken) where T : EntityBase
@@ -26,7 +26,8 @@ public class WarehouseRepository : IRepository
 		{
 			var collection = _database.GetCollection<T>(typeof(T).Name);
 			var filter = Builders<T>.Filter.Eq("_id", id);
-			return (await collection.FindAsync(filter, cancellationToken: cancellationToken)).FirstOrDefault(cancellationToken: cancellationToken);
+			var firstOrDefault = (await collection.FindAsync(filter, cancellationToken: cancellationToken)).FirstOrDefault(cancellationToken: cancellationToken);
+			return firstOrDefault;
 		}
 		catch (Exception e)
 		{
