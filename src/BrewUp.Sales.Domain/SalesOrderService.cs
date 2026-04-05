@@ -1,9 +1,11 @@
-﻿using BrewUp.DomainModel.Entities.Sales;
+﻿using BrewUp.DomainModel.Services;
+using BrewUp.Sales.Domain.Entities;
+using BrewUp.Sales.Domain.Helper;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BrewUp.DomainModel.Services;
+namespace BrewUp.Sales.Domain;
 
 public sealed class SalesOrderService(
 	[FromKeyedServices("sale")] IRepository saleRepository,

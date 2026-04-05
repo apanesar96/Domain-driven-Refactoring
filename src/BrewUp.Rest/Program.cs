@@ -40,6 +40,8 @@ builder.Services.AddKeyedScoped<IRepository, WarehouseRepository>("warehouse");
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddScoped<ISalesOrderService, BrewUp.DomainModel.Services.SalesOrderService>();
+builder.Services.AddSales();
+// Get All Sales and for each Project register the Modules
 builder.Services.AddScoped<ISalesQueryService, SalesQueryService>();
 builder.Services.AddScoped<IQueries<SalesOrder>, SalesOrderQueries>();
 

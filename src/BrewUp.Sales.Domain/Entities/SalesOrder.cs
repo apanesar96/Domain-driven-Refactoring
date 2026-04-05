@@ -1,8 +1,10 @@
-﻿using BrewUp.Shared.Contracts;
+﻿using BrewUp.DomainModel.Entities.Sales;
+using BrewUp.Sales.Domain.Helper;
+using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using BrewUp.Shared.Entities;
 
-namespace BrewUp.DomainModel.Entities.Sales;
+namespace BrewUp.Sales.Domain.Entities;
 
 public class SalesOrder : AggregateRoot
 {
