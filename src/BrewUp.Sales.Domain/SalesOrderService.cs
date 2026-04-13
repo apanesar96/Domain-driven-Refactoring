@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace BrewUp.Sales.Domain;
 
 public sealed class SalesOrderService(
-	[FromKeyedServices("sale")] IRepository saleRepository,
+	[FromKeyedServices("sales")] IRepository salesRepository,
 	[FromKeyedServices("warehouse")] IRepository warehouseRepository) : ISalesOrderService
 {
 	public async Task CreateSalesOrderAsync(SalesOrderId salesOrderId, SalesOrderNumber salesOrderNumber, OrderDate orderDate,
@@ -24,6 +24,6 @@ public sealed class SalesOrderService(
 
 		var aggregate = SalesOrder.CreateSalesOrder(salesOrderId, salesOrderNumber, orderDate, customerId, customerName, beersAvailable);
 
-		await saleRepository.InsertAsync(aggregate.MapToSharedDto(), cancellationToken);
+		await salesRepository.InsertAsync(aggregate.MapToSharedDto(), cancellationToken);
 	}
 }

@@ -3,14 +3,14 @@ using BrewUp.Shared.Entities;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
-namespace BrewUp.Infrastructure.MongoDb;
+namespace BrewUp.Sales.Infrastructures;
 
-public class SaleRepository : IRepository
+public class SalesRepository : IRepository
 {
 	private readonly IMongoDatabase _database;
 	private readonly ILogger _logger;
 
-	public SaleRepository(IMongoClient mongoClient,
+	public SalesRepository(IMongoClient mongoClient,
 		ILoggerFactory loggerFactory)
 	{
 		_logger = loggerFactory.CreateLogger(GetType());

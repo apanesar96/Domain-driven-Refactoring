@@ -8,6 +8,7 @@ namespace BrewUp.Sales.Domain.Entities;
 
 public class SalesOrder : AggregateRoot
 {
+	internal SalesOrderId Type { get; init; }
 	internal readonly SalesOrderId _salesOrderId = default!;
 	internal readonly SalesOrderNumber _salesOrderNumber = default!;
 	internal readonly OrderDate _orderDate = default!;
@@ -36,7 +37,7 @@ public class SalesOrder : AggregateRoot
 
 		_customerId = customerId;
 		_customerName = customerName;
-
+		
 		_rows = row;
 	}
 }
