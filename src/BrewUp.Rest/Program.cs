@@ -1,3 +1,4 @@
+using System.Reflection;
 using BrewUp.DomainModel.Services;
 using BrewUp.Infrastructure.MongoDb;
 using BrewUp.ReadModel;
@@ -5,6 +6,7 @@ using BrewUp.ReadModel.Sales.Queries;
 using BrewUp.ReadModel.Sales.Services;
 using BrewUp.ReadModel.Warehouses.Queries;
 using BrewUp.ReadModel.Warehouses.Services;
+using BrewUp.Rest.Modules;
 using BrewUp.Rest.Services;
 using BrewUp.Rest.Validators.Warehouses;
 using BrewUp.Sales.Infrastructures.DependencyInjection;
@@ -37,8 +39,14 @@ builder.Services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo()
 var mongoDbSettings = builder.Configuration.GetSection("BrewUp:MongoDbSettings").Get<MongoDbSettings>();
 builder.Services.AddMongoDb(mongoDbSettings!);
 
-builder.Services.RegisterSales();
+// builder.Services.RegisterSales();
 builder.Services.RegisterWarehouse();
+
+Assembly.GetExecutingAssembly()
+	.GetTypes()
+	.Where(type => type.IsClass && type.IsAssignableTo(typeof(IModule)))
+	.Select(module => (IModule)Activator.CreateInstance(module)!).ToList()
+	.ForEach(module => module.Register(builder));
 
 builder.Services.AddFluentValidationAutoValidation();
 
