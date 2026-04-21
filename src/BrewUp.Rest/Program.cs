@@ -9,6 +9,7 @@ using BrewUp.Rest.Services;
 using BrewUp.Rest.Validators.Warehouses;
 using BrewUp.Sales.Infrastructures.DependencyInjection;
 using BrewUp.Shared.Entities;
+using BrewUp.Warehouses.Infrastructure.DependancyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.OpenApi.Models;
@@ -36,17 +37,16 @@ builder.Services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo()
 var mongoDbSettings = builder.Configuration.GetSection("BrewUp:MongoDbSettings").Get<MongoDbSettings>();
 builder.Services.AddMongoDb(mongoDbSettings!);
 
-builder.Services.AddKeyedScoped<IRepository, WarehouseRepository>("warehouse");
 builder.Services.RegisterSales();
+builder.Services.RegisterWarehouse();
 
 builder.Services.AddFluentValidationAutoValidation();
-// Get All Sales and for each Project register the Modules
+
 builder.Services.AddScoped<ISalesQueryService, SalesQueryService>();
 builder.Services.AddScoped<IQueries<SalesOrder>, SalesOrderQueries>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<SetAvailabilityValidator>();
 builder.Services.AddSingleton<ValidationHandler>();
-builder.Services.AddScoped<IWarehouseService, BrewUp.DomainModel.Services.WarehouseService>();
 builder.Services.AddScoped<IAvailabilityQueryService, AvailabilityQueryService>();
 builder.Services.AddScoped<IQueries<Availability>, AvailabilityQueries>();
 

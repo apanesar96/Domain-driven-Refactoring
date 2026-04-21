@@ -14,4 +14,9 @@
     <ProjectReference Include="..\BrewUp.Shared\BrewUp.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\Warehouses\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
