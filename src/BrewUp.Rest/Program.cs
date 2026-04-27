@@ -39,14 +39,7 @@ builder.Services.AddSwaggerGen(setup => setup.SwaggerDoc("v1", new OpenApiInfo()
 var mongoDbSettings = builder.Configuration.GetSection("BrewUp:MongoDbSettings").Get<MongoDbSettings>();
 builder.Services.AddMongoDb(mongoDbSettings!);
 
-// builder.Services.RegisterSales();
-builder.Services.RegisterWarehouse();
-
-Assembly.GetExecutingAssembly()
-	.GetTypes()
-	.Where(type => type.IsClass && type.IsAssignableTo(typeof(IModule)))
-	.Select(module => (IModule)Activator.CreateInstance(module)!).ToList()
-	.ForEach(module => module.Register(builder));
+builder.RegisterModules();
 
 builder.Services.AddFluentValidationAutoValidation();
 
