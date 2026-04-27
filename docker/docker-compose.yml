@@ -4,7 +4,7 @@ services:
   logistics-mongodb:
       image: mongo
       ports:
-          - 17017:27017
+          - 27017:27017
 
       volumes:
          - type: volume
