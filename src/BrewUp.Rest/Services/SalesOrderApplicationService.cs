@@ -9,12 +9,15 @@ namespace BrewUp.Rest.Services;
 
 public static class SalesOrderApplicationService
 {
-	public static async Task<Results<Created, NotFound>> HandleCreateSalesOrder(ISalesOrderService salesOrderService, SalesOrderJson body, CancellationToken cancellationToken)
+	public static async Task<Results<Created, NotFound>> HandleCreateSalesOrder([FromKeyedServices("warehouse")] IRepository warehouseRepository, 
+		ISalesOrderService salesOrderService, 
+		SalesOrderJson body, CancellationToken cancellationToken)
 	{
+		var availableSalesOrder = await AddAvailableBeers(body.Rows, warehouseRepository, cancellationToken);
 		await salesOrderService.CreateSalesOrderAsync(new SalesOrderId(new Guid(body.SalesOrderId)),
 			new SalesOrderNumber(body.SalesOrderNumber), new OrderDate(body.OrderDate),
 			new CustomerId(body.CustomerId), new CustomerName(body.CustomerName),
-			body.Rows, cancellationToken);
+			availableSalesOrder, cancellationToken);
 
 		return TypedResults.Created($"v1/sales/{body.SalesOrderId}");
 	}
@@ -23,5 +26,18 @@ public static class SalesOrderApplicationService
 	{
 		var orders = await salesQueryService.GetSalesOrdersAsync(0, 30, cancellationToken);
 		return TypedResults.Ok(orders);
+	}
+	
+	private static async Task<List<SalesOrderRowJson>> AddAvailableBeers(IEnumerable<SalesOrderRowJson> rows, IRepository repository, CancellationToken cancellationToken)
+	{
+		List<SalesOrderRowJson> beersAvailable = new();
+		foreach (var row in rows)
+		{
+			var availability = await repository.GetByIdAsync<Shared.Entities.Availability>(row.BeerId.ToString(), cancellationToken);
+			if (availability != null)
+				beersAvailable.Add(row);
+		}
+
+		return beersAvailable;
 	}
 }

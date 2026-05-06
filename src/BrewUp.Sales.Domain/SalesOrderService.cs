@@ -8,21 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 namespace BrewUp.Sales.Domain;
 
 public sealed class SalesOrderService(
-	[FromKeyedServices("sales")] IRepository salesRepository,
-	[FromKeyedServices("warehouse")] IRepository warehouseRepository) : ISalesOrderService
+	[FromKeyedServices("sales")] IRepository salesRepository) : ISalesOrderService
 {
 	public async Task CreateSalesOrderAsync(SalesOrderId salesOrderId, SalesOrderNumber salesOrderNumber, OrderDate orderDate,
 		CustomerId customerId, CustomerName customerName, IEnumerable<SalesOrderRowJson> rows, CancellationToken cancellationToken)
 	{
-		List<SalesOrderRowJson> beersAvailable = new();
-		foreach (var row in rows)
-		{
-			var availability = await warehouseRepository.GetByIdAsync<Shared.Entities.Availability>(row.BeerId.ToString(), cancellationToken);
-			if (availability != null)
-				beersAvailable.Add(row);
-		}
-
-		var aggregate = SalesOrder.CreateSalesOrder(salesOrderId, salesOrderNumber, orderDate, customerId, customerName, beersAvailable);
+		var aggregate = SalesOrder.CreateSalesOrder(salesOrderId, salesOrderNumber, orderDate, customerId, customerName, rows);
 
 		await salesRepository.InsertAsync(aggregate.MapToSharedDto(), cancellationToken);
 	}
