@@ -1,9 +1,9 @@
-﻿using BrewUp.DomainModel.Services;
+﻿using BrewUp.Shared.Domain;
 using BrewUp.Shared.Entities;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
-namespace BrewUp.Infrastructure.MongoDb;
+namespace BrewUp.Warehouses.Infrastructure;
 
 public class WarehouseRepository : IRepository
 {

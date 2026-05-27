@@ -1,8 +1,9 @@
 ﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
+using BrewUp.Shared.Queries;
 using Microsoft.Extensions.Logging;
 
-namespace BrewUp.ReadModel.Warehouses.Services;
+namespace BrewUp.Warehouse.ReadModel.Services;
 
 public sealed class AvailabilityQueryService(ILoggerFactory loggerFactory, IQueries<Availability> queries) : ServiceBase(loggerFactory), IAvailabilityQueryService
 {

@@ -1,5 +1,4 @@
-﻿using BrewUp.DomainModel.Entities.Sales;
-using BrewUp.Sales.Domain.Helper;
+﻿using BrewUp.Sales.Domain.Helper;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using BrewUp.Shared.Entities;

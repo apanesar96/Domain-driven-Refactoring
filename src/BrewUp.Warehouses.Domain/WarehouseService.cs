@@ -1,8 +1,10 @@
 ﻿using BrewUp.Shared.CustomTypes;
+using BrewUp.Shared.Domain;
+using BrewUp.Warehouses.Domain.Helper;
 using Microsoft.Extensions.DependencyInjection;
-using Availability = BrewUp.DomainModel.Entities.Warehouses.Availability;
+using Availability = BrewUp.Warehouses.Domain.Entities.Availability;
 
-namespace BrewUp.DomainModel.Services;
+namespace BrewUp.Warehouses.Domain;
 
 public sealed class WarehouseService([FromKeyedServices("warehouse")] IRepository repository) : IWarehouseService
 {

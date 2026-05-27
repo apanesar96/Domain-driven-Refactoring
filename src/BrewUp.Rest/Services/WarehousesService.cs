@@ -1,6 +1,6 @@
-﻿using BrewUp.DomainModel.Services;
-using BrewUp.Shared.Contracts;
+﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
+using BrewUp.Warehouses.Domain;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BrewUp.Rest.Services

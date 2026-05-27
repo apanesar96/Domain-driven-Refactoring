@@ -1,6 +1,6 @@
-﻿using BrewUp.DomainModel.Services;
-using BrewUp.Shared.CustomTypes;
-using Availability = BrewUp.DomainModel.Entities.Warehouses.Availability;
+﻿using BrewUp.Shared.CustomTypes;
+using BrewUp.Warehouses.Domain;
+using Availability = BrewUp.Warehouses.Domain.Entities.Availability;
 
 namespace BrewUp.Warehouses.Facade;
 

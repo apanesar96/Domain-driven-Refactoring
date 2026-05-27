@@ -1,7 +1,7 @@
 ﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
 
-namespace BrewUp.ReadModel.Warehouses.Services;
+namespace BrewUp.Warehouse.ReadModel.Services;
 
 public interface IAvailabilityQueryService
 {

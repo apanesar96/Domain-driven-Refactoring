@@ -1,7 +1,7 @@
 ﻿using BrewUp.Shared.CustomTypes;
 using BrewUp.Shared.Entities;
 
-namespace BrewUp.DomainModel.Entities.Warehouses;
+namespace BrewUp.Warehouses.Domain.Entities;
 
 public class Availability : AggregateRoot
 {

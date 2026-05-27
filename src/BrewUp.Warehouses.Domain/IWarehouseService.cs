@@ -1,7 +1,7 @@
 ﻿using BrewUp.Shared.CustomTypes;
-using Availability = BrewUp.DomainModel.Entities.Warehouses.Availability;
+using Availability = BrewUp.Warehouses.Domain.Entities.Availability;
 
-namespace BrewUp.DomainModel.Services;
+namespace BrewUp.Warehouses.Domain;
 
 public interface IWarehouseService
 {

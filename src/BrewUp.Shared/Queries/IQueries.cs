@@ -1,7 +1,7 @@
-﻿using BrewUp.Shared.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using BrewUp.Shared.Entities;
 
-namespace BrewUp.ReadModel
+namespace BrewUp.Shared.Queries
 {
 	public interface IQueries<T> where T : EntityBase
 	{

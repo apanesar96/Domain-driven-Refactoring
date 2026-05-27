@@ -1,9 +1,10 @@
-﻿using BrewUp.Shared.Entities;
+﻿using System.Linq.Expressions;
+using BrewUp.Shared.Entities;
+using BrewUp.Shared.Queries;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using System.Linq.Expressions;
 
-namespace BrewUp.ReadModel.Sales.Queries;
+namespace BrewUp.Sales.ReadModel.Queries;
 
 public sealed class SalesOrderQueries(IMongoClient mongoClient) : IQueries<SalesOrder>
 {

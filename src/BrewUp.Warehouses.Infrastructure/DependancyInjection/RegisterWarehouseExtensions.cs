@@ -1,5 +1,5 @@
-using BrewUp.DomainModel.Services;
-using BrewUp.Infrastructure.MongoDb;
+using BrewUp.Shared.Domain;
+using BrewUp.Warehouses.Domain;
 using BrewUp.Warehouses.Facade;
 using Microsoft.Extensions.DependencyInjection;
 

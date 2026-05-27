@@ -1,5 +1,5 @@
-using BrewUp.DomainModel.Services;
-using BrewUp.ReadModel.Sales.Services;
+using BrewUp.Sales.Domain;
+using BrewUp.Sales.ReadModel.Services;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using BrewUp.Shared.Entities;

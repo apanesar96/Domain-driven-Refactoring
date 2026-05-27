@@ -1,7 +1,7 @@
 ﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 
-namespace BrewUp.DomainModel.Services;
+namespace BrewUp.Sales.Domain;
 
 public interface ISalesOrderService
 {

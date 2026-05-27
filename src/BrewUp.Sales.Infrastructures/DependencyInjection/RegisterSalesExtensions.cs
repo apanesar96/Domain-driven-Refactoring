@@ -1,5 +1,5 @@
-using BrewUp.DomainModel.Services;
 using BrewUp.Sales.Domain;
+using BrewUp.Shared.Domain;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BrewUp.Sales.Infrastructures.DependencyInjection;

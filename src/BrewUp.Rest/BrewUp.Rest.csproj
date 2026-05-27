@@ -21,8 +21,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BrewUp.Infrastructure\BrewUp.Infrastructure.csproj" />
-    <ProjectReference Include="..\BrewUp.ReadModel\BrewUp.ReadModel.csproj" />
     <ProjectReference Include="..\BrewUp.Sales.Infrastructures\BrewUp.Sales.Infrastructures.csproj" />
+    <ProjectReference Include="..\BrewUp.Sales.ReadModel\BrewUp.Sales.ReadModel.csproj" />
+    <ProjectReference Include="..\BrewUp.Warehouse.ReadModel\BrewUp.Warehouse.ReadModel.csproj" />
     <ProjectReference Include="..\BrewUp.Warehouses.Domain\BrewUp.Warehouses.Domain.csproj" />
     <ProjectReference Include="..\BrewUp.Warehouses.Facade\BrewUp.Warehouses.Facade.csproj" />
     <ProjectReference Include="..\BrewUp.Warehouses.Infrastructure\BrewUp.Warehouses.Infrastructure.csproj" />

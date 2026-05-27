@@ -1,8 +1,9 @@
 ﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
+using BrewUp.Shared.Queries;
 using Microsoft.Extensions.Logging;
 
-namespace BrewUp.ReadModel.Sales.Services;
+namespace BrewUp.Sales.ReadModel.Services;
 
 public sealed class SalesQueryService
 	(ILoggerFactory loggerFactory, IQueries<SalesOrder> queries) : ServiceBase(loggerFactory), ISalesQueryService

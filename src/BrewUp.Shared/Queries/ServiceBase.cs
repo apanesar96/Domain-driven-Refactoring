@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace BrewUp.ReadModel;
+namespace BrewUp.Shared.Queries;
 
 public abstract class ServiceBase
 {
