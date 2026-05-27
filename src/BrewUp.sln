@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.DomainModel", "BrewUp.DomainModel\BrewUp.DomainModel.csproj", "{230E8A74-C25D-4348-8C16-A25AFFB07E78}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.Infrastructure", "BrewUp.Infrastructure\BrewUp.Infrastructure.csproj", "{15C8FA3A-2A24-4F9B-A0B2-ED8955256B4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrewUp.ReadModel", "BrewUp.ReadModel\BrewUp.ReadModel.csproj", "{BDDDD969-8F3D-455F-977B-6402252EBD11}"
@@ -31,16 +29,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewUp.Warehouses.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewUp.Warehouses.Facade", "BrewUp.Warehouses.Facade\BrewUp.Warehouses.Facade.csproj", "{3C20436D-5D1E-4A91-9CC6-F55EEAA75C29}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{77F0FE80-0985-4697-88B7-85380412E9B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6738607A-7B6D-4FE3-A4B8-E4F00D8B5F90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5C1ED048-3305-4590-B20C-6B9C39AB304D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{230E8A74-C25D-4348-8C16-A25AFFB07E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{230E8A74-C25D-4348-8C16-A25AFFB07E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{230E8A74-C25D-4348-8C16-A25AFFB07E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{230E8A74-C25D-4348-8C16-A25AFFB07E78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{15C8FA3A-2A24-4F9B-A0B2-ED8955256B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15C8FA3A-2A24-4F9B-A0B2-ED8955256B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15C8FA3A-2A24-4F9B-A0B2-ED8955256B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -98,5 +98,9 @@ Global
 		{956F2452-5685-4D77-B15B-C9B7B43200A0} = {DF1D0272-E121-40C6-AF57-09C8996DEDA0}
 		{08D100E3-7E5B-412A-9DF3-0E1B67B994D5} = {0F998B30-830C-4D2E-B235-36B80FA8EC35}
 		{3C20436D-5D1E-4A91-9CC6-F55EEAA75C29} = {0F998B30-830C-4D2E-B235-36B80FA8EC35}
+		{15C8FA3A-2A24-4F9B-A0B2-ED8955256B4C} = {77F0FE80-0985-4697-88B7-85380412E9B4}
+		{0E0D8289-C585-46CF-8FEE-B26749767F72} = {6738607A-7B6D-4FE3-A4B8-E4F00D8B5F90}
+		{66A2B01C-18C8-43C3-A9E3-C50BD7A796F1} = {6738607A-7B6D-4FE3-A4B8-E4F00D8B5F90}
+		{A7BC6DAD-CD40-4B37-A381-757BBEB1C10C} = {5C1ED048-3305-4590-B20C-6B9C39AB304D}
 	EndGlobalSection
 EndGlobal

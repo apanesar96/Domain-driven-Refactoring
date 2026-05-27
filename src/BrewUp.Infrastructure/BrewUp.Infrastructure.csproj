@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BrewUp.DomainModel\BrewUp.DomainModel.csproj" />
     <ProjectReference Include="..\BrewUp.Shared\BrewUp.Shared.csproj" />
   </ItemGroup>
 
