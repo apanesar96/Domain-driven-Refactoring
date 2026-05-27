@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\BrewUp.Shared\BrewUp.Shared.csproj" />
       <ProjectReference Include="..\BrewUp.Warehouses.Domain\BrewUp.Warehouses.Domain.csproj" />
+      <ProjectReference Include="..\BrewUp.Warehouses.Facade\BrewUp.Warehouses.Facade.csproj" />
     </ItemGroup>
 
     <ItemGroup>

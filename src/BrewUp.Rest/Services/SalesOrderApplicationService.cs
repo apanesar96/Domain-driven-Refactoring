@@ -3,17 +3,18 @@ using BrewUp.ReadModel.Sales.Services;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using BrewUp.Shared.Entities;
+using BrewUp.Warehouses.Facade;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BrewUp.Rest.Services;
 
 public static class SalesOrderApplicationService
 {
-	public static async Task<Results<Created, NotFound>> HandleCreateSalesOrder([FromKeyedServices("warehouse")] IRepository warehouseRepository, 
+	public static async Task<Results<Created, NotFound>> HandleCreateSalesOrder(WarehouseFacade warehouseFacade,
 		ISalesOrderService salesOrderService, 
 		SalesOrderJson body, CancellationToken cancellationToken)
 	{
-		var availableSalesOrder = await AddAvailableBeers(body.Rows, warehouseRepository, cancellationToken);
+		var availableSalesOrder = await AddAvailableBeers(body.Rows, warehouseFacade, cancellationToken);
 		await salesOrderService.CreateSalesOrderAsync(new SalesOrderId(new Guid(body.SalesOrderId)),
 			new SalesOrderNumber(body.SalesOrderNumber), new OrderDate(body.OrderDate),
 			new CustomerId(body.CustomerId), new CustomerName(body.CustomerName),
@@ -28,12 +29,12 @@ public static class SalesOrderApplicationService
 		return TypedResults.Ok(orders);
 	}
 	
-	private static async Task<List<SalesOrderRowJson>> AddAvailableBeers(IEnumerable<SalesOrderRowJson> rows, IRepository repository, CancellationToken cancellationToken)
+	private static async Task<List<SalesOrderRowJson>> AddAvailableBeers(IEnumerable<SalesOrderRowJson> rows, WarehouseFacade warehouseFacade, CancellationToken cancellationToken)
 	{
 		List<SalesOrderRowJson> beersAvailable = new();
 		foreach (var row in rows)
 		{
-			var availability = await repository.GetByIdAsync<Shared.Entities.Availability>(row.BeerId.ToString(), cancellationToken);
+			var availability = await warehouseFacade.GetBeerAvailabilityAsync(new BeerId(row.BeerId), cancellationToken);
 			if (availability != null)
 				beersAvailable.Add(row);
 		}
