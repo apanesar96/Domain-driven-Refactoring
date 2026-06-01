@@ -53,12 +53,12 @@ app.UseCors("CorsPolicy");
 
 //Sales
 var salesGroup = app.MapGroup("/v1/sales/").WithTags("Sales");
-salesGroup.MapPost("/", SalesOrderApplicationService.HandleCreateSalesOrder)
+salesGroup.MapPost("/", SalesOrderHandler.HandleCreateSalesOrder)
 	.Produces(StatusCodes.Status400BadRequest)
 	.Produces(StatusCodes.Status201Created)
 	.WithName("CreateSalesOrder");
 
-salesGroup.MapGet("/", SalesOrderApplicationService.HandleGetOrders)
+salesGroup.MapGet("/", SalesOrderHandler.HandleGetOrders)
 	.Produces(StatusCodes.Status404NotFound)
 	.Produces(StatusCodes.Status200OK)
 	.WithName("GetSalesOrders");

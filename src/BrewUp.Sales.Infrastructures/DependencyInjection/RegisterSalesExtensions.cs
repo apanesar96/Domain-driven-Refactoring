@@ -1,4 +1,5 @@
 using BrewUp.Sales.Domain;
+using BrewUp.Sales.Facade;
 using BrewUp.Shared.Domain;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,7 @@ public static class RegisterSalesExtensions
     {
         services.AddKeyedScoped<IRepository, SalesRepository>("sales");
         services.AddScoped<ISalesOrderService, SalesOrderService>();
+        services.AddScoped<SalesFacade>();
         return services;
     }
 }

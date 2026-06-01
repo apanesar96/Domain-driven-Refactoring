@@ -8,8 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BrewUp.Sales.Domain\BrewUp.Sales.Domain.csproj" />
-      <ProjectReference Include="..\BrewUp.Sales.Facade\BrewUp.Sales.Facade.csproj" />
-      <ProjectReference Include="..\BrewUp.Warehouses.Facade\BrewUp.Warehouses.Facade.csproj" />
+      <ProjectReference Include="..\BrewUp.Shared\BrewUp.Shared.csproj" />
     </ItemGroup>
 
 </Project>

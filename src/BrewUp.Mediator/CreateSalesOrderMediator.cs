@@ -1,25 +1,18 @@
-using BrewUp.Sales.Domain;
+using BrewUp.Sales.Facade;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using BrewUp.Warehouses.Facade;
 
 namespace BrewUp.Mediator;
 
-public static class CreateSalesOrderUseCase
+public static class CreateSalesOrderMediator
 {
-    public static async Task CreateSalesOrder(WarehouseFacade warehouseFacade, ISalesOrderService salesOrderService,
+    public static async Task CreateSalesOrder(WarehouseFacade warehouseFacade, SalesFacade salesFacade,
         SalesOrderJson body, CancellationToken cancellationToken)
     {
         var availableBeers = await AddAvailableBeers(body.Rows, warehouseFacade, cancellationToken);
-
-        await salesOrderService.CreateSalesOrderAsync(
-            new SalesOrderId(new Guid(body.SalesOrderId)),
-            new SalesOrderNumber(body.SalesOrderNumber),
-            new OrderDate(body.OrderDate),
-            new CustomerId(body.CustomerId),
-            new CustomerName(body.CustomerName),
-            availableBeers,
-            cancellationToken);
+        
+        await salesFacade.CreateSalesOrderAsync(body, availableBeers, cancellationToken);
     }
 
     private static async Task<List<SalesOrderRowJson>> AddAvailableBeers(IEnumerable<SalesOrderRowJson> rows,
