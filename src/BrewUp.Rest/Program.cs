@@ -39,36 +39,15 @@ builder.RegisterModules();
 
 builder.Services.AddFluentValidationAutoValidation();
 
-builder.Services.AddScoped<ISalesQueryService, SalesQueryService>();
-builder.Services.AddScoped<IQueries<SalesOrder>, SalesOrderQueries>();
-
 builder.Services.AddValidatorsFromAssemblyContaining<SetAvailabilityValidator>();
 builder.Services.AddSingleton<ValidationHandler>();
-builder.Services.AddScoped<IAvailabilityQueryService, AvailabilityQueryService>();
-builder.Services.AddScoped<IQueries<Availability>, AvailabilityQueries>();
 
 var app = builder.Build();
 
 app.UseCors("CorsPolicy");
 
-//Sales
-var salesGroup = app.MapGroup("/v1/sales/").WithTags("Sales");
-salesGroup.MapPost("/", SalesOrderHandler.HandleCreateSalesOrder)
-	.Produces(StatusCodes.Status400BadRequest)
-	.Produces(StatusCodes.Status201Created)
-	.WithName("CreateSalesOrder");
-
-salesGroup.MapGet("/", SalesOrderHandler.HandleGetOrders)
-	.Produces(StatusCodes.Status404NotFound)
-	.Produces(StatusCodes.Status200OK)
-	.WithName("GetSalesOrders");
-
-//Warehouses
-var warehousesGroup = app.MapGroup("/v1/warehouses/").WithTags("Warehouses");
-warehousesGroup.MapPost("/availabilities", WarehousesService.HandleSetAvailabilities)
-	.Produces(StatusCodes.Status400BadRequest)
-	.Produces(StatusCodes.Status200OK)
-	.WithName("SetAvailabilities");
+MapSalesEndpoints(app);
+MapWarehouseEndpoints(app);
 
 // Configure the HTTP request pipeline.
 app.UseSwagger(s =>
@@ -82,3 +61,28 @@ app.UseSwaggerUI(s =>
 });
 
 await app.RunAsync();
+
+void MapSalesEndpoints(WebApplication webApplication)
+{
+	//Sales
+	var salesGroup = webApplication.MapGroup("/v1/sales/").WithTags("Sales");
+	salesGroup.MapPost("/", SalesOrderHandler.HandleCreateSalesOrder)
+		.Produces(StatusCodes.Status400BadRequest)
+		.Produces(StatusCodes.Status201Created)
+		.WithName("CreateSalesOrder");
+
+	salesGroup.MapGet("/", SalesOrderHandler.HandleGetOrders)
+		.Produces(StatusCodes.Status404NotFound)
+		.Produces(StatusCodes.Status200OK)
+		.WithName("GetSalesOrders");
+}
+
+void MapWarehouseEndpoints(WebApplication app1)
+{
+	//Warehouses
+	var warehousesGroup = app1.MapGroup("/v1/warehouses/").WithTags("Warehouses");
+	warehousesGroup.MapPost("/availabilities", WarehousesService.HandleSetAvailabilities)
+		.Produces(StatusCodes.Status400BadRequest)
+		.Produces(StatusCodes.Status200OK)
+		.WithName("SetAvailabilities");
+}
