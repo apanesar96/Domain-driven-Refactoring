@@ -1,9 +1,10 @@
-﻿using BrewUp.Shared.CustomTypes;
-using BrewUp.Shared.Contracts;
+﻿using BrewUp.Shared.Contracts;
+using BrewUp.Shared.CustomTypes;
+using BrewUp.Shared.Entities;
 
-namespace BrewUp.Shared.Entities;
+namespace BrewUp.Sales.ReadModel.Dtos;
 
-public class SalesOrder : EntityBase
+public class SalesOrderDto : EntityBase
 {
     public string SalesOrderNumber { get; private set; } = new(string.Empty);
     public DateTime OrderDate { get; private set; } = DateTime.MinValue;
@@ -13,14 +14,14 @@ public class SalesOrder : EntityBase
 
     public IEnumerable<SalesOrderRowJson> Rows { get; private set; } = Enumerable.Empty<SalesOrderRowJson>();
 
-    protected SalesOrder()
+    protected SalesOrderDto()
     {
     }
 
-    public static SalesOrder Create(SalesOrderId salesOrderId, SalesOrderNumber salesOrderNumber, OrderDate orderDate, CustomerId customerId,
+    public static SalesOrderDto Create(SalesOrderId salesOrderId, SalesOrderNumber salesOrderNumber, OrderDate orderDate, CustomerId customerId,
         CustomerName customerName, IEnumerable<SalesOrderRowJson> rows)
     {
-        return new SalesOrder
+        return new SalesOrderDto
         {
             Id = salesOrderId.Value.ToString(),
             SalesOrderNumber = salesOrderNumber.Value,

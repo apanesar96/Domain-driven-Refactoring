@@ -1,30 +1,31 @@
 ﻿using System.Linq.Expressions;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
+using BrewUp.Warehouse.ReadModel.Dtos;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
 namespace BrewUp.Warehouse.ReadModel.Queries;
 
-public sealed class AvailabilityQueries(IMongoClient mongoClient) : IQueries<Availability>
+public sealed class AvailabilityQueries(IMongoClient mongoClient) : IQueries<AvailabilityDto>
 {
 	private readonly IMongoDatabase _database = mongoClient.GetDatabase("Sales");
 
-	public async Task<Availability> GetByIdAsync(string id, CancellationToken cancellationToken)
+	public async Task<AvailabilityDto> GetByIdAsync(string id, CancellationToken cancellationToken)
 	{
-		var collection = _database.GetCollection<Availability>(nameof(Availability));
-		var filter = Builders<Availability>.Filter.Eq("_id", id);
+		var collection = _database.GetCollection<AvailabilityDto>(nameof(AvailabilityDto));
+		var filter = Builders<AvailabilityDto>.Filter.Eq("_id", id);
 		return (await collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken) > 0
 			? (await collection.FindAsync(filter, cancellationToken: cancellationToken).ConfigureAwait(false)).First()
 			: null)!;
 	}
 
-	public async Task<PagedResult<Availability>> GetByFilterAsync(Expression<Func<Availability, bool>>? query, int page, int pageSize, CancellationToken cancellationToken)
+	public async Task<PagedResult<AvailabilityDto>> GetByFilterAsync(Expression<Func<AvailabilityDto, bool>>? query, int page, int pageSize, CancellationToken cancellationToken)
 	{
 		if (--page < 0)
 			page = 0;
 
-		var collection = _database.GetCollection<Availability>(nameof(Availability));
+		var collection = _database.GetCollection<AvailabilityDto>(nameof(AvailabilityDto));
 		var queryable = query != null
 			? collection.AsQueryable().Where(query)
 			: collection.AsQueryable();
@@ -32,6 +33,6 @@ public sealed class AvailabilityQueries(IMongoClient mongoClient) : IQueries<Ava
 		var count = await queryable.CountAsync(cancellationToken: cancellationToken);
 		var results = await queryable.Skip(page * pageSize).Take(pageSize).ToListAsync(cancellationToken: cancellationToken);
 
-		return new PagedResult<Availability>(results, page, pageSize, count);
+		return new PagedResult<AvailabilityDto>(results, page, pageSize, count);
 	}
 }

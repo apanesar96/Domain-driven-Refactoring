@@ -3,6 +3,8 @@ using BrewUp.Sales.Facade;
 using BrewUp.Sales.ReadModel.Services;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
+using BrewUp.Shared.Queries;
+using BrewUp.Warehouse.ReadModel.Dtos;
 using BrewUp.Warehouses.Facade;
 using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -12,9 +14,11 @@ public static class SalesOrderHandler
 {
     public static async Task<Results<Created, NotFound>> HandleCreateSalesOrder(WarehouseFacade warehouseFacade,
         SalesFacade salesFacade,
-        SalesOrderJson body, CancellationToken cancellationToken)
+        SalesOrderJson body, 
+        CancellationToken cancellationToken,
+        IQueries<AvailabilityDto> availabilityQueries)
     {
-        await CreateSalesOrderMediator.CreateSalesOrder(warehouseFacade, salesFacade, body, cancellationToken);
+        await CreateSalesOrderMediator.CreateSalesOrder(warehouseFacade, salesFacade, body, cancellationToken, availabilityQueries);
         return TypedResults.Created($"v1/sales/{body.SalesOrderId}");
     }
 

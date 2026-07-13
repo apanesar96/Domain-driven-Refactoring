@@ -1,4 +1,5 @@
-﻿using BrewUp.Shared.Contracts;
+﻿using BrewUp.Sales.ReadModel.Dtos;
+using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
 using Microsoft.Extensions.Logging;
@@ -6,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace BrewUp.Sales.ReadModel.Services;
 
 public sealed class SalesQueryService
-	(ILoggerFactory loggerFactory, IQueries<SalesOrder> queries) : ServiceBase(loggerFactory), ISalesQueryService
+	(ILoggerFactory loggerFactory, IQueries<SalesOrderDto> queries) : ServiceBase(loggerFactory), ISalesQueryService
 {
 	public async Task<PagedResult<SalesOrderJson>> GetSalesOrdersAsync(int page, int pageSize, CancellationToken cancellationToken)
 	{

@@ -1,11 +1,12 @@
 ﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
+using BrewUp.Warehouse.ReadModel.Dtos;
 using Microsoft.Extensions.Logging;
 
 namespace BrewUp.Warehouse.ReadModel.Services;
 
-public sealed class AvailabilityQueryService(ILoggerFactory loggerFactory, IQueries<Availability> queries) : ServiceBase(loggerFactory), IAvailabilityQueryService
+public sealed class AvailabilityQueryService(ILoggerFactory loggerFactory, IQueries<AvailabilityDto> queries) : ServiceBase(loggerFactory), IAvailabilityQueryService
 {
 	public async Task<PagedResult<BeerAvailabilityJson>> GetAvailabilityAsync(Guid beerId, CancellationToken cancellationToken)
 	{

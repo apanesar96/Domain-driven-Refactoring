@@ -1,6 +1,7 @@
 using BrewUp.Shared.Domain;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
+using BrewUp.Warehouse.ReadModel.Dtos;
 using BrewUp.Warehouse.ReadModel.Queries;
 using BrewUp.Warehouse.ReadModel.Services;
 using BrewUp.Warehouses.Domain;
@@ -18,7 +19,7 @@ public static class RegisterWarehouseExtensions
         services.AddScoped<WarehouseFacade>();
 
         services.AddScoped<IAvailabilityQueryService, AvailabilityQueryService>();
-        services.AddScoped<IQueries<Availability>, AvailabilityQueries>();
+        services.AddScoped<IQueries<AvailabilityDto>, AvailabilityQueries>();
         return services;
     }
 }
