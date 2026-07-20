@@ -18,7 +18,7 @@ public static class SalesOrderHandler
         CancellationToken cancellationToken,
         IQueries<AvailabilityDto> availabilityQueries)
     {
-        await CreateSalesOrderMediator.CreateSalesOrder(warehouseFacade, salesFacade, body, cancellationToken, availabilityQueries);
+        await CreateSalesOrderMediator.CreateSalesOrder(salesFacade, body, cancellationToken);
         return TypedResults.Created($"v1/sales/{body.SalesOrderId}");
     }
 
