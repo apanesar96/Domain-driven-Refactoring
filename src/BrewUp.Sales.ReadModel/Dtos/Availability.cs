@@ -4,23 +4,23 @@ using BrewUp.Shared.Entities;
 
 namespace BrewUp.Sales.ReadModel.Dtos;
 
-public class AvailabilityDto : EntityBase
+public class Availability : EntityBase
 {
     public string BeerId { get; private set; } = string.Empty;
     public string BeerName { get; private set; } = string.Empty;
 
     public Quantity Quantity { get; private set; } = new(0, string.Empty);
 
-    protected AvailabilityDto()
+    protected Availability()
     {
     }
 
-    public static AvailabilityDto Create(BeerId beerId, BeerName beerName, Quantity quantity)
+    public static Availability Create(BeerId beerId, BeerName beerName, Quantity quantity)
     {
-        return new AvailabilityDto(beerId.Value.ToString(), beerName.Value, quantity);
+        return new Availability(beerId.Value.ToString(), beerName.Value, quantity);
     }
 
-    private AvailabilityDto(string beerId, string beerName, Quantity quantity)
+    private Availability(string beerId, string beerName, Quantity quantity)
     {
         Id = beerId;
 

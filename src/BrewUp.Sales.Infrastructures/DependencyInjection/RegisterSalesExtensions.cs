@@ -21,8 +21,8 @@ public static class RegisterSalesExtensions
         services.AddScoped<ISalesOrderService, SalesOrderService>();
         services.AddScoped<SalesFacade>();
         services.AddScoped<ISalesQueryService, SalesQueryService>();
-        services.AddScoped<IQueries<SalesOrderDto>, SalesOrderQueries>();
-        services.AddScoped<IQueries<AvailabilityDto>, AvailabilityQueries>();
+        services.AddScoped<IQueries<SalesOrder>, SalesOrderQueries>();
+        services.AddScoped<IQueries<Availability>, AvailabilityQueries>();
         return services;
     }
 }

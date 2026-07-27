@@ -3,11 +3,12 @@ using BrewUp.Sales.ReadModel.Dtos;
 using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
 using BrewUp.Shared.Queries;
+using Availability = BrewUp.Sales.ReadModel.Dtos.Availability;
 
 
 namespace BrewUp.Sales.Facade;
 
-public class SalesFacade(ISalesOrderService salesOrderService, IQueries<AvailabilityDto> availabilityQueries)
+public class SalesFacade(ISalesOrderService salesOrderService, IQueries<Availability> availabilityQueries)
 {
     public async Task CreateSalesOrderAsync(SalesOrderJson salesOrder, CancellationToken cancellationToken)
     {
@@ -24,7 +25,7 @@ public class SalesFacade(ISalesOrderService salesOrderService, IQueries<Availabi
             cancellationToken);
     }
     
-    private static async Task<List<SalesOrderRowJson>> AddAvailableBeers(IEnumerable<SalesOrderRowJson> rows, IQueries<AvailabilityDto> availabilityQueries, CancellationToken cancellationToken)
+    private static async Task<List<SalesOrderRowJson>> AddAvailableBeers(IEnumerable<SalesOrderRowJson> rows, IQueries<Availability> availabilityQueries, CancellationToken cancellationToken)
     {
         List<SalesOrderRowJson> beersAvailable = new();
 

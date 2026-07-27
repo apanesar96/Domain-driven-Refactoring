@@ -4,7 +4,7 @@ using BrewUp.Shared.Entities;
 
 namespace BrewUp.Sales.ReadModel.Dtos;
 
-public class SalesOrderDto : EntityBase
+public class SalesOrder : EntityBase
 {
     public string SalesOrderNumber { get; private set; } = new(string.Empty);
     public DateTime OrderDate { get; private set; } = DateTime.MinValue;
@@ -14,14 +14,14 @@ public class SalesOrderDto : EntityBase
 
     public IEnumerable<SalesOrderRowJson> Rows { get; private set; } = Enumerable.Empty<SalesOrderRowJson>();
 
-    protected SalesOrderDto()
+    protected SalesOrder()
     {
     }
 
-    public static SalesOrderDto Create(SalesOrderId salesOrderId, SalesOrderNumber salesOrderNumber, OrderDate orderDate, CustomerId customerId,
+    public static SalesOrder Create(SalesOrderId salesOrderId, SalesOrderNumber salesOrderNumber, OrderDate orderDate, CustomerId customerId,
         CustomerName customerName, IEnumerable<SalesOrderRowJson> rows)
     {
-        return new SalesOrderDto
+        return new SalesOrder
         {
             Id = salesOrderId.Value.ToString(),
             SalesOrderNumber = salesOrderNumber.Value,
