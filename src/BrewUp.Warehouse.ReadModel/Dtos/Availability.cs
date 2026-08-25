@@ -1,7 +1,8 @@
 ﻿using BrewUp.Shared.Contracts;
 using BrewUp.Shared.CustomTypes;
+using BrewUp.Shared.Entities;
 
-namespace BrewUp.Shared.Entities;
+namespace BrewUp.Warehouse.ReadModel.Dtos;
 
 public class Availability : EntityBase
 {
@@ -29,5 +30,5 @@ public class Availability : EntityBase
     }
 
     public BeerAvailabilityJson ToJson() => new(Id, BeerName,
-        new CustomTypes.Availability(0, Quantity.Value, Quantity.UnitOfMeasure));
+        new Shared.CustomTypes.Availability(0, Quantity.Value, Quantity.UnitOfMeasure));
 }

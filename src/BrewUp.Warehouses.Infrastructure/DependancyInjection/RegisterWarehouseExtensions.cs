@@ -1,6 +1,7 @@
 using BrewUp.Shared.Domain;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
+using BrewUp.Warehouse.ReadModel.Dtos;
 using BrewUp.Warehouse.ReadModel.Queries;
 using BrewUp.Warehouse.ReadModel.Services;
 using BrewUp.Warehouses.Domain;

@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
+using BrewUp.Warehouse.ReadModel.Dtos;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
