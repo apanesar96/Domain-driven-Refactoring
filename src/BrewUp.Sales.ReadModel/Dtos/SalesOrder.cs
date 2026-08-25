@@ -1,7 +1,8 @@
-﻿using BrewUp.Shared.CustomTypes;
-using BrewUp.Shared.Contracts;
+﻿using BrewUp.Shared.Contracts;
+using BrewUp.Shared.CustomTypes;
+using BrewUp.Shared.Entities;
 
-namespace BrewUp.Shared.Entities;
+namespace BrewUp.Sales.ReadModel.Dtos;
 
 public class SalesOrder : EntityBase
 {

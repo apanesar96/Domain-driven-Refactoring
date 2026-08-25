@@ -1,4 +1,5 @@
-﻿using BrewUp.Shared.Contracts;
+﻿using BrewUp.Sales.ReadModel.Dtos;
+using BrewUp.Shared.Contracts;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
 using Microsoft.Extensions.Logging;

@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using BrewUp.Sales.ReadModel.Dtos;
 using BrewUp.Shared.Entities;
 using BrewUp.Shared.Queries;
 using MongoDB.Driver;

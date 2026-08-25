@@ -46,7 +46,7 @@ public class SalesRepository : IRepository
 		try
 		{
 			var collection = _database.GetCollection<T>(type);
-			await collection.InsertOneAsync(entity, cancellationToken: cancellationToken);
+			await collection.InsertOneAsync(entity,cancellationToken: cancellationToken);
 		}
 		catch (Exception e)
 		{

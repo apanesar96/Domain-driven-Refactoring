@@ -1,5 +1,6 @@
 using BrewUp.Sales.Domain;
 using BrewUp.Sales.Facade;
+using BrewUp.Sales.ReadModel.Dtos;
 using BrewUp.Sales.ReadModel.Queries;
 using BrewUp.Sales.ReadModel.Services;
 using BrewUp.Shared.Domain;
